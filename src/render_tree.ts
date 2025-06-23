@@ -1,7 +1,7 @@
-import type { BaseNode } from './base_node.ts'
-import { NumberNode } from './number_node.ts'
-import { ExpressionNode } from './expression_node.ts'
-import { ExpressionOperator } from './expression_operator.ts'
+import type { BaseNode } from './models/base_node.ts'
+import { NumberNode } from './models/number_node.ts'
+import { ExpressionNode } from './models/expression_node.ts'
+import { ExpressionOperator } from './enums/expression_operator.ts'
 
 export function renderTree(node: BaseNode): string {
   if (node instanceof ExpressionNode) {

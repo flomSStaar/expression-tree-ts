@@ -1,9 +1,9 @@
 // sqrt(6 + 4 / 2 * 5)
 // result =
 
-import { ExpressionOperator } from './src/expression_operator.ts'
-import { ExpressionNode } from './src/expression_node.ts'
-import { NumberNode } from './src/number_node.ts'
+import { ExpressionOperator } from './src/enums/expression_operator.ts'
+import { ExpressionNode } from './src/models/expression_node.ts'
+import { NumberNode } from './src/models/number_node.ts'
 import { renderTree } from './src/render_tree.ts'
 import { evaluateTree } from './src/evaluate_tree.ts'
 

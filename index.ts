@@ -14,7 +14,7 @@ function testExpression(expression: string, expectedResult: number, expressionTr
 
   console.log('expected:', expected)
   console.log('actual:  ', actual)
-  console.log('same ? ', expected === actual)
+  console.log('same ?   ', expected === actual)
 }
 
 testExpression(

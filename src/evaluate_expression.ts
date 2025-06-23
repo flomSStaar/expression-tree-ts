@@ -10,21 +10,21 @@ import { UnaryNodeOperator } from './enums/unary_node_operator.ts'
 import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error.ts'
 import { UnknownUnaryOperatorError } from './errors/unknown_unary_operator_error.ts'
 
-export function evaluateTree(node: BaseNode): number {
+export function evaluateExpression(node: BaseNode): number {
   if (node instanceof BinaryNode) {
     switch (node.operator) {
       case BinaryNodeOperator.SUM: {
-        return evaluateTree(node.left) + evaluateTree(node.right)
+        return evaluateExpression(node.left) + evaluateExpression(node.right)
       }
       case BinaryNodeOperator.SUBTRACT: {
-        return evaluateTree(node.left) - evaluateTree(node.right)
+        return evaluateExpression(node.left) - evaluateExpression(node.right)
       }
       case BinaryNodeOperator.MULTIPLY: {
-        return evaluateTree(node.left) * evaluateTree(node.right)
+        return evaluateExpression(node.left) * evaluateExpression(node.right)
       }
       case BinaryNodeOperator.DIVIDE: {
-        const leftValue = evaluateTree(node.left)
-        const rightValue = evaluateTree(node.right)
+        const leftValue = evaluateExpression(node.left)
+        const rightValue = evaluateExpression(node.right)
         if (rightValue === 0) {
           throw new DivisionByZeroError()
         }
@@ -36,13 +36,13 @@ export function evaluateTree(node: BaseNode): number {
   } else if (node instanceof UnaryNode) {
     switch (node.operator) {
       case UnaryNodeOperator.NEGATE: {
-        return -evaluateTree(node.value)
+        return -evaluateExpression(node.value)
       }
       case UnaryNodeOperator.ABSOLUTE: {
-        return Math.abs(evaluateTree(node.value))
+        return Math.abs(evaluateExpression(node.value))
       }
       case UnaryNodeOperator.SQUARE_ROOT: {
-        const leftValue = evaluateTree(node.value)
+        const leftValue = evaluateExpression(node.value)
         if (leftValue < 0) {
           throw new NegativeSquareRootError()
         }

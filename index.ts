@@ -1,6 +1,6 @@
 import { NumberNode } from './src/models/number_node.ts'
-import { renderTree } from './src/render_tree.ts'
-import { evaluateTree } from './src/evaluate_tree.ts'
+import { renderExpression } from './src/render_expression.ts'
+import { evaluateExpression } from './src/evaluate_expression.ts'
 import { BinaryNode } from './src/models/binary_node.ts'
 import { UnaryNode } from './src/models/unary_node.ts'
 import { UnaryNodeOperator } from './src/enums/unary_node_operator.ts'
@@ -23,11 +23,11 @@ const tree = new UnaryNode(
   )
 )
 
-const value = renderTree(tree)
+const value = renderExpression(tree)
 
-console.log('renderTree', value)
+console.log('renderExpression', value)
 
-const result = evaluateTree(tree)
+const result = evaluateExpression(tree)
 console.log('actual result', result)
 
 console.log('-------------------')
@@ -44,8 +44,8 @@ const tree2 = new BinaryNode(
   new NumberNode(5)
 )
 
-const value2 = renderTree(tree2)
-console.log('renderTree', value2)
+const value2 = renderExpression(tree2)
+console.log('renderExpression', value2)
 
-const result2 = evaluateTree(tree2)
+const result2 = evaluateExpression(tree2)
 console.log('actual result', result2)

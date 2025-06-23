@@ -1,6 +1,6 @@
 import { describe, expect, it, test } from 'bun:test'
 import { NumberNode } from '../src/models/number_node.ts'
-import { evaluateTree } from '../src/evaluate_tree.ts'
+import { evaluateExpression } from '../src/evaluate_expression.ts'
 import { DivisionByZeroError } from '../src/errors/division_by_zero_error.ts'
 import { NegativeSquareRootError } from '../src/errors/invalid_square_root_error.ts'
 import { UnknownNodeTypeError } from '../src/errors/unknown_node_type_error.ts'
@@ -11,13 +11,13 @@ import { UnaryNodeOperator } from '../src/enums/unary_node_operator.ts'
 import { UnknownUnaryOperatorError } from '../src/errors/unknown_unary_operator_error.ts'
 import { UnknownBinaryOperatorError } from '../src/errors/unknown_binary_operator_error.ts'
 
-describe('evaluate tree', () => {
+describe('evaluate expression', () => {
   describe('unary node operations', () => {
     describe('negation operation', () => {
       it('should negate a number', () => {
         const expression = new UnaryNode(UnaryNodeOperator.NEGATE, new NumberNode(5))
 
-        const result = evaluateTree(expression)
+        const result = evaluateExpression(expression)
 
         expect(result).toBe(-5)
       })
@@ -28,7 +28,7 @@ describe('evaluate tree', () => {
           new BinaryNode(BinaryNodeOperator.SUM, new NumberNode(3), new NumberNode(2))
         )
 
-        const result = evaluateTree(expression)
+        const result = evaluateExpression(expression)
 
         expect(result).toBe(-5)
       })
@@ -38,7 +38,7 @@ describe('evaluate tree', () => {
       it('should calculate square root of a positive number', () => {
         const expression = new UnaryNode(UnaryNodeOperator.SQUARE_ROOT, new NumberNode(16))
 
-        const result = evaluateTree(expression)
+        const result = evaluateExpression(expression)
 
         expect(result).toBe(4)
       })
@@ -48,7 +48,7 @@ describe('evaluate tree', () => {
       it('should return absolute value of a negative number', () => {
         const expression = new UnaryNode(UnaryNodeOperator.ABSOLUTE, new NumberNode(-10))
 
-        const result = evaluateTree(expression)
+        const result = evaluateExpression(expression)
 
         expect(result).toBe(10)
       })
@@ -56,7 +56,7 @@ describe('evaluate tree', () => {
       it('should return absolute value of a positive number', () => {
         const expression = new UnaryNode(UnaryNodeOperator.ABSOLUTE, new NumberNode(10))
 
-        const result = evaluateTree(expression)
+        const result = evaluateExpression(expression)
 
         expect(result).toBe(10)
       })
@@ -64,7 +64,7 @@ describe('evaluate tree', () => {
       it('should return absolute value of zero', () => {
         const expression = new UnaryNode(UnaryNodeOperator.ABSOLUTE, new NumberNode(0))
 
-        const result = evaluateTree(expression)
+        const result = evaluateExpression(expression)
 
         expect(result).toBe(0)
       })
@@ -79,7 +79,7 @@ describe('evaluate tree', () => {
         new NumberNode(2)
       )
 
-      const result = evaluateTree(expression)
+      const result = evaluateExpression(expression)
 
       expect(result).toBe(4)
     })
@@ -91,7 +91,7 @@ describe('evaluate tree', () => {
         new NumberNode(3)
       )
 
-      const result = evaluateTree(expression)
+      const result = evaluateExpression(expression)
 
       expect(result).toBe(2)
     })
@@ -103,7 +103,7 @@ describe('evaluate tree', () => {
         new NumberNode(4)
       )
 
-      const result = evaluateTree(expression)
+      const result = evaluateExpression(expression)
 
       expect(result).toBe(12)
     })
@@ -115,7 +115,7 @@ describe('evaluate tree', () => {
         new NumberNode(2)
       )
 
-      const result = evaluateTree(expression)
+      const result = evaluateExpression(expression)
 
       expect(result).toBe(4)
     })
@@ -128,7 +128,7 @@ describe('evaluate tree', () => {
         new NumberNode(1)
       )
 
-      expect(() => evaluateTree(expression)).toThrowError(UnknownUnaryOperatorError)
+      expect(() => evaluateExpression(expression)).toThrowError(UnknownUnaryOperatorError)
     })
 
     test('unknown binary operator', () => {
@@ -138,7 +138,7 @@ describe('evaluate tree', () => {
         new NumberNode(2)
       )
 
-      expect(() => evaluateTree(expression)).toThrowError(UnknownBinaryOperatorError)
+      expect(() => evaluateExpression(expression)).toThrowError(UnknownBinaryOperatorError)
     })
 
     test('unknown node type', () => {
@@ -147,7 +147,7 @@ describe('evaluate tree', () => {
         value: 42,
       } as unknown as BinaryNode
 
-      expect(() => evaluateTree(expression)).toThrowError(UnknownNodeTypeError)
+      expect(() => evaluateExpression(expression)).toThrowError(UnknownNodeTypeError)
     })
   })
 
@@ -159,13 +159,13 @@ describe('evaluate tree', () => {
         new NumberNode(0)
       )
 
-      expect(() => evaluateTree(expression)).toThrowError(DivisionByZeroError)
+      expect(() => evaluateExpression(expression)).toThrowError(DivisionByZeroError)
     })
 
     test('negative square root', () => {
       const expression = new UnaryNode(UnaryNodeOperator.SQUARE_ROOT, new NumberNode(-4))
 
-      expect(() => evaluateTree(expression)).toThrowError(NegativeSquareRootError)
+      expect(() => evaluateExpression(expression)).toThrowError(NegativeSquareRootError)
     })
   })
 })

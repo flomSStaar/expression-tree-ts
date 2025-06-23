@@ -7,10 +7,10 @@ import { UnaryNodeOperator } from './enums/unary_node_operator.ts'
 import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error.ts'
 import { UnknownUnaryOperatorError } from './errors/unknown_unary_operator_error.ts'
 
-export function renderTree(node: BaseNode): string {
+export function renderExpression(node: BaseNode): string {
   if (node instanceof BinaryNode) {
-    const leftNode = renderTree(node.left)
-    const rightNode = renderTree(node.right)
+    const leftNode = renderExpression(node.left)
+    const rightNode = renderExpression(node.right)
     const operator = {
       [BinaryNodeOperator.SUM]: '+',
       [BinaryNodeOperator.SUBTRACT]: '-',
@@ -29,15 +29,15 @@ export function renderTree(node: BaseNode): string {
 
     switch (node.operator) {
       case UnaryNodeOperator.NEGATE: {
-        const valueNode = renderTree(node.value)
+        const valueNode = renderExpression(node.value)
         return `-${valueNode}`
       }
       case UnaryNodeOperator.ABSOLUTE: {
-        const valueNode = renderTree(node.value)
+        const valueNode = renderExpression(node.value)
         return `abs(${valueNode})`
       }
       case UnaryNodeOperator.SQUARE_ROOT: {
-        const valueNode = renderTree(node.value)
+        const valueNode = renderExpression(node.value)
         return `sqrt(${valueNode})`
       }
       default:

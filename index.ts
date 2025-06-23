@@ -5,47 +5,85 @@ import { BinaryNode } from './src/models/binary_node.ts'
 import { UnaryNode } from './src/models/unary_node.ts'
 import { UnaryNodeOperator } from './src/enums/unary_node_operator.ts'
 import { BinaryNodeOperator } from './src/enums/binary_node_operator.ts'
+import type { BaseNode } from './src/models/base_node.ts'
 
-console.log('-------------------')
-console.log('sqrt(6 + 4 / 2 * 5)')
-console.log('expected result: 4')
+function testExpression(expression: string, expectedResult: number, expressionTree: BaseNode) {
+  console.log('-------------------')
+  const expected = `${expression} = ${expectedResult}`
+  const actual = `${renderExpression(expressionTree)} = ${evaluateExpression(expressionTree)}`
 
-const tree = new UnaryNode(
-  UnaryNodeOperator.SQUARE_ROOT,
+  console.log('expected:', expected)
+  console.log('actual:  ', actual)
+  console.log('same ? ', expected === actual)
+}
+
+testExpression(
+  'sqrt(6 + 4 / 2 * 5)',
+  4,
+  new UnaryNode(
+    UnaryNodeOperator.SQUARE_ROOT,
+    new BinaryNode(
+      BinaryNodeOperator.SUM,
+      new NumberNode(6),
+      new BinaryNode(
+        BinaryNodeOperator.MULTIPLY,
+        new BinaryNode(BinaryNodeOperator.DIVIDE, new NumberNode(4), new NumberNode(2)),
+        new NumberNode(5)
+      )
+    )
+  )
+)
+
+testExpression(
+  '6 - -2 + 5',
+  13,
+  new BinaryNode(
+    BinaryNodeOperator.SUM,
+    new BinaryNode(
+      BinaryNodeOperator.SUBTRACT,
+      new NumberNode(6),
+      new UnaryNode(UnaryNodeOperator.NEGATE, new NumberNode(2))
+    ),
+    new NumberNode(5)
+  )
+)
+
+testExpression(
+  '6 + -(2 + 5)',
+  -1,
+  new BinaryNode(
+    BinaryNodeOperator.SUM,
+    new NumberNode(6),
+    new UnaryNode(
+      UnaryNodeOperator.NEGATE,
+      new BinaryNode(BinaryNodeOperator.SUM, new NumberNode(2), new NumberNode(5))
+    )
+  )
+)
+
+testExpression(
+  '6 + -2 * 5',
+  -4,
   new BinaryNode(
     BinaryNodeOperator.SUM,
     new NumberNode(6),
     new BinaryNode(
       BinaryNodeOperator.MULTIPLY,
-      new BinaryNode(BinaryNodeOperator.DIVIDE, new NumberNode(4), new NumberNode(2)),
+      new UnaryNode(UnaryNodeOperator.NEGATE, new NumberNode(2)),
       new NumberNode(5)
     )
   )
 )
 
-const value = renderExpression(tree)
-
-console.log('renderExpression', value)
-
-const result = evaluateExpression(tree)
-console.log('actual result', result)
-
-console.log('-------------------')
-console.log('6 - -2 + 5')
-console.log('expected result: 13')
-
-const tree2 = new BinaryNode(
-  BinaryNodeOperator.SUM,
+testExpression(
+  '6 + -(2 * 5)',
+  -4,
   new BinaryNode(
-    BinaryNodeOperator.SUBTRACT,
+    BinaryNodeOperator.SUM,
     new NumberNode(6),
-    new UnaryNode(UnaryNodeOperator.NEGATE, new NumberNode(2))
-  ),
-  new NumberNode(5)
+    new UnaryNode(
+      UnaryNodeOperator.NEGATE,
+      new BinaryNode(BinaryNodeOperator.MULTIPLY, new NumberNode(2), new NumberNode(5))
+    )
+  )
 )
-
-const value2 = renderExpression(tree2)
-console.log('renderExpression', value2)
-
-const result2 = evaluateExpression(tree2)
-console.log('actual result', result2)

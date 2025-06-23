@@ -6,6 +6,7 @@ import { UnaryNode } from './models/unary_node.ts'
 import { UnaryNodeOperator } from './enums/unary_node_operator.ts'
 import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error.ts'
 import { UnknownUnaryOperatorError } from './errors/unknown_unary_operator_error.ts'
+import { UnknownNodeTypeError } from './errors/unknown_node_type_error.ts'
 
 export function renderExpression(node: BaseNode): string {
   if (node instanceof BinaryNode) {
@@ -25,10 +26,15 @@ export function renderExpression(node: BaseNode): string {
 
     return `${leftNode} ${operator} ${rightNode}`
   } else if (node instanceof UnaryNode) {
-    // Handle unary operations
-
     switch (node.operator) {
       case UnaryNodeOperator.NEGATE: {
+        if (node.value instanceof NumberNode && node.value.value === 0) {
+          return '0'
+        } else if (node.value instanceof BinaryNode) {
+          const valueNode = renderExpression(node.value)
+          return `-(${valueNode})`
+        }
+
         const valueNode = renderExpression(node.value)
         return `-${valueNode}`
       }
@@ -46,6 +52,6 @@ export function renderExpression(node: BaseNode): string {
   } else if (node instanceof NumberNode) {
     return node.toString()
   } else {
-    throw new Error(`Unknown node type: ${node.type}`)
+    throw new UnknownNodeTypeError(node.type)
   }
 }

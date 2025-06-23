@@ -1,37 +1,47 @@
 import type { BaseNode } from './models/base_node.ts'
 import { NumberNode } from './models/number_node.ts'
-import { ExpressionNode } from './models/expression_node.ts'
-import { ExpressionOperator } from './enums/expression_operator.ts'
+import { BinaryNode } from './models/binary_node.ts'
+import { BinaryNodeOperator } from './enums/binary_node_operator.ts'
+import { UnaryNode } from './models/unary_node.ts'
+import { UnaryNodeOperator } from './enums/unary_node_operator.ts'
+import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error.ts'
+import { UnknownUnaryOperatorError } from './errors/unknown_unary_operator_error.ts'
 
 export function renderTree(node: BaseNode): string {
-  if (node instanceof ExpressionNode) {
+  if (node instanceof BinaryNode) {
+    const leftNode = renderTree(node.left)
+    const rightNode = renderTree(node.right)
+    const operator = {
+      [BinaryNodeOperator.SUM]: '+',
+      [BinaryNodeOperator.SUBTRACT]: '-',
+      [BinaryNodeOperator.MULTIPLY]: '*',
+      [BinaryNodeOperator.DIVIDE]: '/',
+      [BinaryNodeOperator.POWER]: '^',
+    }[node.operator]
+
+    if (!operator) {
+      throw new UnknownBinaryOperatorError(node.operator)
+    }
+
+    return `${leftNode} ${operator} ${rightNode}`
+  } else if (node instanceof UnaryNode) {
+    // Handle unary operations
+
     switch (node.operator) {
-      case ExpressionOperator.SUM: {
-        const leftNode = node.left ? renderTree(node.left) : ''
-        const rightNode = node.right ? renderTree(node.right) : ''
-        return `${leftNode} + ${rightNode}`
+      case UnaryNodeOperator.NEGATE: {
+        const valueNode = renderTree(node.value)
+        return `-${valueNode}`
       }
-      case ExpressionOperator.SUBTRACT: {
-        const leftNode = node.left ? renderTree(node.left) : ''
-        const rightNode = node.right ? renderTree(node.right) : ''
-        return `${leftNode} - ${rightNode}`
+      case UnaryNodeOperator.ABSOLUTE: {
+        const valueNode = renderTree(node.value)
+        return `abs(${valueNode})`
       }
-      case ExpressionOperator.MULTIPLY: {
-        const leftNode = node.left ? renderTree(node.left) : ''
-        const rightNode = node.right ? renderTree(node.right) : ''
-        return `${leftNode} * ${rightNode}`
-      }
-      case ExpressionOperator.DIVIDE: {
-        const leftNode = node.left ? renderTree(node.left) : ''
-        const rightNode = node.right ? renderTree(node.right) : ''
-        return `${leftNode} / ${rightNode}`
-      }
-      case ExpressionOperator.SQUARE_ROOT: {
-        const leftNode = node.left ? renderTree(node.left) : ''
-        return `sqrt(${leftNode})`
+      case UnaryNodeOperator.SQUARE_ROOT: {
+        const valueNode = renderTree(node.value)
+        return `sqrt(${valueNode})`
       }
       default:
-        throw new Error(`Unknown operator: ${node.operator}`)
+        throw new UnknownUnaryOperatorError(node.operator)
     }
   } else if (node instanceof NumberNode) {
     return node.toString()

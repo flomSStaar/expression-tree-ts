@@ -1,5 +1,13 @@
 # expression-tree
 
+## Concept
+
+This is a simple expression tree implementation in TypeScript. It allows you to parse mathematical expressions and evaluate them using a tree structure.
+
+![expression tree](docs/tree.png)
+
+## Development
+
 To install dependencies:
 
 ```bash
@@ -12,4 +20,3 @@ To run:
 bun run index.ts
 ```
 
-This project was created using `bun init` in bun v1.1.31. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

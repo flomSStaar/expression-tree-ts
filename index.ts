@@ -87,3 +87,17 @@ testExpression(
     )
   )
 )
+
+testExpression(
+  '6 + 2 * 3 - 1',
+  11,
+  new BinaryNode(
+    BinaryNodeOperator.SUBTRACT,
+    new BinaryNode(
+      BinaryNodeOperator.SUM,
+      new NumberNode(6),
+      new BinaryNode(BinaryNodeOperator.MULTIPLY, new NumberNode(2), new NumberNode(3))
+    ),
+    new NumberNode(1)
+  )
+)

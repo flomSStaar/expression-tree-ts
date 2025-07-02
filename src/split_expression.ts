@@ -1,27 +1,7 @@
 export function splitExpression(expression: string): string[] {
-  const tokens: string[] = []
-  let currentToken = ''
+  const regex = /(\d+|\+|-|\*|\/|\(|\))/g
 
-  for (const char of expression) {
-    if (/\s/.test(char)) {
-      if (currentToken) {
-        tokens.push(currentToken)
-        currentToken = ''
-      }
-    } else if ('+-*/'.includes(char)) {
-      if (currentToken) {
-        tokens.push(currentToken)
-      }
-      tokens.push(char)
-      currentToken = ''
-    } else {
-      currentToken += char
-    }
-  }
+  const cleanExpr = expression.replace(/\s+/g, '')
 
-  if (currentToken) {
-    tokens.push(currentToken)
-  }
-
-  return tokens
+  return Array.from(cleanExpr.matchAll(regex)).map((m) => m[0])
 }

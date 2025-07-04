@@ -1,4 +1,4 @@
-import { describe, expect, it, test } from 'bun:test'
+import { describe, expect, it, test } from 'vitest'
 import { BinaryNode } from '../src/models/binary_node.ts'
 import { BinaryNodeOperator } from '../src/enums/binary_node_operator.ts'
 import { NumberNode } from '../src/models/number_node.ts'

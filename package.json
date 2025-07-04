@@ -5,14 +5,17 @@
   "scripts": {
     "dev": "bun index.ts",
     "lint": "eslint src index.ts --fix",
-    "coverage": "bun test --coverage --coverage-reporter=lcov"
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@adonisjs/eslint-config": "^2.1.0",
     "@adonisjs/prettier-config": "^1.4.5",
     "@types/bun": "latest",
+    "@vitest/coverage-v8": "3.2.4",
     "eslint": "^9.29.0",
-    "prettier": "^3.6.0"
+    "prettier": "^3.6.0",
+    "vitest": "^3.2.4"
   },
   "peerDependencies": {
     "typescript": "^5.8.3"

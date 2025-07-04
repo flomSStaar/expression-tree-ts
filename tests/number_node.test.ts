@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'bun:test'
+import { describe, expect, it } from 'vitest'
 import { NumberNode } from '../src/models/number_node.ts'
 import { NodeType } from '../src/enums/node_type.ts'
 

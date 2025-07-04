@@ -1,4 +1,4 @@
-import { describe, expect, it, test } from 'bun:test'
+import { describe, expect, it, test } from 'vitest'
 import { NumberNode } from '../src/models/number_node.ts'
 import { evaluateExpression } from '../src/evaluate_expression.ts'
 import { DivisionByZeroError } from '../src/errors/division_by_zero_error.ts'
@@ -118,6 +118,18 @@ describe('evaluate expression', () => {
       const result = evaluateExpression(expression)
 
       expect(result).toBe(4)
+    })
+
+    test('power operation', () => {
+      const expression = new BinaryNode(
+        BinaryNodeOperator.POWER,
+        new NumberNode(8),
+        new NumberNode(2)
+      )
+
+      const result = evaluateExpression(expression)
+
+      expect(result).toBe(64)
     })
   })
 

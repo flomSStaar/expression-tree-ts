@@ -30,6 +30,9 @@ export function evaluateExpression(node: BaseNode): number {
         }
         return leftValue / rightValue
       }
+      case BinaryNodeOperator.POWER: {
+        return Math.pow(evaluateExpression(node.left), evaluateExpression(node.right))
+      }
       default:
         throw new UnknownBinaryOperatorError(node.operator)
     }

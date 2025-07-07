@@ -1,12 +1,12 @@
-import type { BaseNode } from './models/base_node.ts'
-import { NumberNode } from './models/number_node.ts'
-import { BinaryNode } from './models/binary_node.ts'
-import { BinaryNodeOperator } from './enums/binary_node_operator.ts'
-import { UnaryNode } from './models/unary_node.ts'
-import { UnaryNodeOperator } from './enums/unary_node_operator.ts'
-import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error.ts'
-import { UnknownUnaryOperatorError } from './errors/unknown_unary_operator_error.ts'
-import { UnknownNodeTypeError } from './errors/unknown_node_type_error.ts'
+import type { BaseNode } from './models/base_node'
+import { NumberNode } from './models/number_node'
+import { BinaryNode } from './models/binary_node'
+import { BinaryNodeOperator } from './enums/binary_node_operator'
+import { UnaryNode } from './models/unary_node'
+import { UnaryNodeOperator } from './enums/unary_node_operator'
+import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error'
+import { UnknownUnaryOperatorError } from './errors/unknown_unary_operator_error'
+import { UnknownNodeTypeError } from './errors/unknown_node_type_error'
 
 export function renderExpression(node: BaseNode): string {
   if (node instanceof BinaryNode) {

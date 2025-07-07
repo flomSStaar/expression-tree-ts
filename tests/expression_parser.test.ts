@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'vitest'
-import { expressionParserInput } from './inputs/expression_parser_input.ts'
-import { ExpressionParser } from '../src/expression_parser.ts'
-import { InvalidExpressionError } from '../src/errors/invalid_expression_error.ts'
-import { InvalidNumberError } from '../src/errors/invalid_number_error.ts'
-import { MissingClosingParenthesisError } from '../src/errors/missing_parenthese_error.ts'
-import { UnknownBinaryOperatorError } from '../src/errors/unknown_binary_operator_error.ts'
+import { expressionParserInput } from './inputs/expression_parser_input'
+import { ExpressionParser } from '../src/expression_parser'
+import { InvalidExpressionError } from '../src/errors/invalid_expression_error'
+import { InvalidNumberError } from '../src/errors/invalid_number_error'
+import { MissingClosingParenthesisError } from '../src/errors/missing_parenthese_error'
+import { UnknownBinaryOperatorError } from '../src/errors/unknown_binary_operator_error'
 
 describe('expression parser', () => {
   test.each(expressionParserInput())('expression: %o', (input, expected) => {

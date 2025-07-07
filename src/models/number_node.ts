@@ -1,5 +1,5 @@
-import { BaseNode } from './base_node.ts'
-import { NodeType } from '../enums/node_type.ts'
+import { BaseNode } from './base_node'
+import { NodeType } from '../enums/node_type'
 
 export class NumberNode extends BaseNode {
   constructor(public readonly value: number) {

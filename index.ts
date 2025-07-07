@@ -1,4 +1,4 @@
-import { ExpressionTree } from './src/expression_tree.ts'
+import { ExpressionTree } from './src/expression_tree'
 
 function testExpression(expression: string, expectedResult: number) {
   const expressionTree = new ExpressionTree()

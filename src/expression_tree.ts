@@ -1,6 +1,6 @@
-import { ExpressionParser } from './expression_parser.ts'
-import { ExpressionCutter } from './expression_cutter.ts'
-import { ExpressionEvaluator } from './expression_evaluator.ts'
+import { ExpressionParser } from './expression_parser'
+import { ExpressionCutter } from './expression_cutter'
+import { ExpressionEvaluator } from './expression_evaluator'
 
 export class ExpressionTree {
   constructor(

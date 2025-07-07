@@ -1,13 +1,13 @@
 import { describe, expect, it, test } from 'vitest'
-import { BinaryNode } from '../src/models/binary_node.ts'
-import { BinaryNodeOperator } from '../src/enums/binary_node_operator.ts'
-import { NumberNode } from '../src/models/number_node.ts'
-import { renderExpression } from '../src/render_expression.ts'
-import { UnaryNode } from '../src/models/unary_node.ts'
-import { UnaryNodeOperator } from '../src/enums/unary_node_operator.ts'
-import { UnknownUnaryOperatorError } from '../src/errors/unknown_unary_operator_error.ts'
-import { UnknownBinaryOperatorError } from '../src/errors/unknown_binary_operator_error.ts'
-import { UnknownNodeTypeError } from '../src/errors/unknown_node_type_error.ts'
+import { BinaryNode } from '../src/models/binary_node'
+import { BinaryNodeOperator } from '../src/enums/binary_node_operator'
+import { NumberNode } from '../src/models/number_node'
+import { renderExpression } from '../src/render_expression'
+import { UnaryNode } from '../src/models/unary_node'
+import { UnaryNodeOperator } from '../src/enums/unary_node_operator'
+import { UnknownUnaryOperatorError } from '../src/errors/unknown_unary_operator_error'
+import { UnknownBinaryOperatorError } from '../src/errors/unknown_binary_operator_error'
+import { UnknownNodeTypeError } from '../src/errors/unknown_node_type_error'
 
 describe('render expression', () => {
   describe('unary node operations', () => {

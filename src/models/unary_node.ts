@@ -1,6 +1,6 @@
-import { BaseNode } from './base_node.ts'
-import { NodeType } from '../enums/node_type.ts'
-import type { UnaryNodeOperator } from '../enums/unary_node_operator.ts'
+import { BaseNode } from './base_node'
+import { NodeType } from '../enums/node_type'
+import type { UnaryNodeOperator } from '../enums/unary_node_operator'
 
 export class UnaryNode extends BaseNode {
   constructor(

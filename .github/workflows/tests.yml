@@ -15,5 +15,5 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 'latest'
-      - run: bun install --production --no-save
+      - run: bun install
       - run: bun test

@@ -1,16 +1,18 @@
 import { NumberNode } from './src/models/number_node.ts'
 import { renderExpression } from './src/render_expression.ts'
-import { evaluateExpression } from './src/evaluate_expression.ts'
 import { BinaryNode } from './src/models/binary_node.ts'
 import { UnaryNode } from './src/models/unary_node.ts'
 import { UnaryNodeOperator } from './src/enums/unary_node_operator.ts'
 import { BinaryNodeOperator } from './src/enums/binary_node_operator.ts'
 import type { BaseNode } from './src/models/base_node.ts'
+import { ExpressionEvaluator } from './src/expression_evaluator.ts'
 
 function testExpression(expression: string, expectedResult: number, expressionTree: BaseNode) {
+  const evaluator = new ExpressionEvaluator()
+
   console.log('-------------------')
   const expected = `${expression} = ${expectedResult}`
-  const actual = `${renderExpression(expressionTree)} = ${evaluateExpression(expressionTree)}`
+  const actual = `${renderExpression(expressionTree)} = ${evaluator.evaluate(expressionTree)}`
 
   console.log('expected:', expected)
   console.log('actual:  ', actual)

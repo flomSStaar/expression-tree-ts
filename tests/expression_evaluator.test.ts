@@ -1,6 +1,5 @@
-import { describe, expect, it, test } from 'vitest'
+import { beforeEach, describe, expect, it, test } from 'vitest'
 import { NumberNode } from '../src/models/number_node.ts'
-import { evaluateExpression } from '../src/evaluate_expression.ts'
 import { DivisionByZeroError } from '../src/errors/division_by_zero_error.ts'
 import { NegativeSquareRootError } from '../src/errors/invalid_square_root_error.ts'
 import { UnknownNodeTypeError } from '../src/errors/unknown_node_type_error.ts'
@@ -10,14 +9,21 @@ import { UnaryNode } from '../src/models/unary_node.ts'
 import { UnaryNodeOperator } from '../src/enums/unary_node_operator.ts'
 import { UnknownUnaryOperatorError } from '../src/errors/unknown_unary_operator_error.ts'
 import { UnknownBinaryOperatorError } from '../src/errors/unknown_binary_operator_error.ts'
+import { ExpressionEvaluator } from '../src/expression_evaluator.ts'
 
 describe('evaluate expression', () => {
+  let evaluator: ExpressionEvaluator
+
+  beforeEach(() => {
+    evaluator = new ExpressionEvaluator()
+  })
+
   describe('unary node operations', () => {
     describe('negation operation', () => {
       it('should negate a number', () => {
         const expression = new UnaryNode(UnaryNodeOperator.NEGATE, new NumberNode(5))
 
-        const result = evaluateExpression(expression)
+        const result = evaluator.evaluate(expression)
 
         expect(result).toBe(-5)
       })
@@ -28,7 +34,7 @@ describe('evaluate expression', () => {
           new BinaryNode(BinaryNodeOperator.SUM, new NumberNode(3), new NumberNode(2))
         )
 
-        const result = evaluateExpression(expression)
+        const result = evaluator.evaluate(expression)
 
         expect(result).toBe(-5)
       })
@@ -38,7 +44,7 @@ describe('evaluate expression', () => {
       it('should calculate square root of a positive number', () => {
         const expression = new UnaryNode(UnaryNodeOperator.SQUARE_ROOT, new NumberNode(16))
 
-        const result = evaluateExpression(expression)
+        const result = evaluator.evaluate(expression)
 
         expect(result).toBe(4)
       })
@@ -48,7 +54,7 @@ describe('evaluate expression', () => {
       it('should return absolute value of a negative number', () => {
         const expression = new UnaryNode(UnaryNodeOperator.ABSOLUTE, new NumberNode(-10))
 
-        const result = evaluateExpression(expression)
+        const result = evaluator.evaluate(expression)
 
         expect(result).toBe(10)
       })
@@ -56,7 +62,7 @@ describe('evaluate expression', () => {
       it('should return absolute value of a positive number', () => {
         const expression = new UnaryNode(UnaryNodeOperator.ABSOLUTE, new NumberNode(10))
 
-        const result = evaluateExpression(expression)
+        const result = evaluator.evaluate(expression)
 
         expect(result).toBe(10)
       })
@@ -64,7 +70,7 @@ describe('evaluate expression', () => {
       it('should return absolute value of zero', () => {
         const expression = new UnaryNode(UnaryNodeOperator.ABSOLUTE, new NumberNode(0))
 
-        const result = evaluateExpression(expression)
+        const result = evaluator.evaluate(expression)
 
         expect(result).toBe(0)
       })
@@ -79,7 +85,7 @@ describe('evaluate expression', () => {
         new NumberNode(2)
       )
 
-      const result = evaluateExpression(expression)
+      const result = evaluator.evaluate(expression)
 
       expect(result).toBe(4)
     })
@@ -91,7 +97,7 @@ describe('evaluate expression', () => {
         new NumberNode(3)
       )
 
-      const result = evaluateExpression(expression)
+      const result = evaluator.evaluate(expression)
 
       expect(result).toBe(2)
     })
@@ -103,7 +109,7 @@ describe('evaluate expression', () => {
         new NumberNode(4)
       )
 
-      const result = evaluateExpression(expression)
+      const result = evaluator.evaluate(expression)
 
       expect(result).toBe(12)
     })
@@ -115,7 +121,7 @@ describe('evaluate expression', () => {
         new NumberNode(2)
       )
 
-      const result = evaluateExpression(expression)
+      const result = evaluator.evaluate(expression)
 
       expect(result).toBe(4)
     })
@@ -127,7 +133,7 @@ describe('evaluate expression', () => {
         new NumberNode(2)
       )
 
-      const result = evaluateExpression(expression)
+      const result = evaluator.evaluate(expression)
 
       expect(result).toBe(64)
     })
@@ -140,7 +146,7 @@ describe('evaluate expression', () => {
         new NumberNode(1)
       )
 
-      expect(() => evaluateExpression(expression)).toThrowError(UnknownUnaryOperatorError)
+      expect(() => evaluator.evaluate(expression)).toThrowError(UnknownUnaryOperatorError)
     })
 
     test('unknown binary operator', () => {
@@ -150,7 +156,7 @@ describe('evaluate expression', () => {
         new NumberNode(2)
       )
 
-      expect(() => evaluateExpression(expression)).toThrowError(UnknownBinaryOperatorError)
+      expect(() => evaluator.evaluate(expression)).toThrowError(UnknownBinaryOperatorError)
     })
 
     test('unknown node type', () => {
@@ -159,7 +165,7 @@ describe('evaluate expression', () => {
         value: 42,
       } as unknown as BinaryNode
 
-      expect(() => evaluateExpression(expression)).toThrowError(UnknownNodeTypeError)
+      expect(() => evaluator.evaluate(expression)).toThrowError(UnknownNodeTypeError)
     })
   })
 
@@ -171,13 +177,13 @@ describe('evaluate expression', () => {
         new NumberNode(0)
       )
 
-      expect(() => evaluateExpression(expression)).toThrowError(DivisionByZeroError)
+      expect(() => evaluator.evaluate(expression)).toThrowError(DivisionByZeroError)
     })
 
     test('negative square root', () => {
       const expression = new UnaryNode(UnaryNodeOperator.SQUARE_ROOT, new NumberNode(-4))
 
-      expect(() => evaluateExpression(expression)).toThrowError(NegativeSquareRootError)
+      expect(() => evaluator.evaluate(expression)).toThrowError(NegativeSquareRootError)
     })
   })
 })

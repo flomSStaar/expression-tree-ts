@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { expressionCutterInput } from './inputs/expression_cutter_input'
-import { ExpressionCutter } from '../src/expression_cutter'
+import { ExpressionCutter } from '../src/expression_cutter.js'
+import { expressionCutterInput } from './inputs/expression_cutter_input.js'
 
 describe('expression cutter', () => {
   test.each(expressionCutterInput())('expression: %s', (input, expected) => {

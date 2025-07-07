@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { NumberNode } from '../src/models/number_node'
-import { NodeType } from '../src/enums/node_type'
+import { NumberNode } from '../src/models/number_node.js'
+import { NodeType } from '../src/enums/node_type.js'
 
 describe('number node', () => {
   it('should create a number node with the correct value', () => {

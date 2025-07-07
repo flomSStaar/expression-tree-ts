@@ -1,9 +1,9 @@
-import type { BaseNode } from '../../src/models/base_node'
-import { BinaryNode } from '../../src/models/binary_node'
-import { BinaryNodeOperator } from '../../src/enums/binary_node_operator'
-import { NumberNode } from '../../src/models/number_node'
-import { UnaryNode } from '../../src/models/unary_node'
-import { UnaryNodeOperator } from '../../src/enums/unary_node_operator'
+import { BaseNode } from '../../src/models/base_node.js'
+import { BinaryNodeOperator } from '../../src/enums/binary_node_operator.js'
+import { BinaryNode } from '../../src/models/binary_node.js'
+import { NumberNode } from '../../src/models/number_node.js'
+import { UnaryNodeOperator } from '../../src/enums/unary_node_operator.js'
+import { UnaryNode } from '../../src/models/unary_node.js'
 
 export function expressionParserInput(): [string[], BaseNode][] {
   return [

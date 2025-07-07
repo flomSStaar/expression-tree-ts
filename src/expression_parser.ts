@@ -1,13 +1,13 @@
-import type { BaseNode } from './models/base_node'
-import { NumberNode } from './models/number_node'
-import { BinaryNode } from './models/binary_node'
-import { BinaryNodeOperator } from './enums/binary_node_operator'
-import { InvalidExpressionError } from './errors/invalid_expression_error'
-import { InvalidNumberError } from './errors/invalid_number_error'
-import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error'
-import { MissingClosingParenthesisError } from './errors/missing_parenthese_error'
-import { UnaryNode } from './models/unary_node'
-import { UnaryNodeOperator } from './enums/unary_node_operator'
+import { InvalidExpressionError } from './errors/invalid_expression_error.js'
+import { BaseNode } from './models/base_node.js'
+import { BinaryNodeOperator } from './enums/binary_node_operator.js'
+import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error.js'
+import { NumberNode } from './models/number_node.js'
+import { UnaryNode } from './models/unary_node.js'
+import { UnaryNodeOperator } from './enums/unary_node_operator.js'
+import { MissingClosingParenthesisError } from './errors/missing_parenthese_error.js'
+import { InvalidNumberError } from './errors/invalid_number_error.js'
+import { BinaryNode } from './models/binary_node.js'
 
 export class ExpressionParser {
   protected tokens: string[] = []

@@ -1,6 +1,6 @@
-import { ExpressionParser } from './expression_parser'
-import { ExpressionCutter } from './expression_cutter'
-import { ExpressionEvaluator } from './expression_evaluator'
+import { ExpressionCutter } from './expression_cutter.js'
+import { ExpressionParser } from './expression_parser.js'
+import { ExpressionEvaluator } from './expression_evaluator.js'
 
 export class ExpressionTree {
   constructor(

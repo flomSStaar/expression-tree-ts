@@ -1,6 +1,6 @@
-import { BaseNode } from './base_node'
-import type { BinaryNodeOperator } from '../enums/binary_node_operator'
-import { NodeType } from '../enums/node_type'
+import { BaseNode } from './base_node.js'
+import { BinaryNodeOperator } from '../enums/binary_node_operator.js'
+import { NodeType } from '../enums/node_type.js'
 
 export class BinaryNode extends BaseNode {
   constructor(

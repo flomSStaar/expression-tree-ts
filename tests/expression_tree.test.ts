@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test } from 'vitest'
-import { expressionTreeInput } from './inputs/expression_tree_input'
-import { ExpressionTree } from '../src/expression_tree'
+import { ExpressionTree } from '../src/expression_tree.js'
+import { expressionTreeInput } from './inputs/expression_tree_input.js'
 
 describe('expression tree', () => {
   let expressionTree: ExpressionTree

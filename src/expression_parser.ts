@@ -6,6 +6,8 @@ import { InvalidExpressionError } from './errors/invalid_expression_error.ts'
 import { InvalidNumberError } from './errors/invalid_number_error.ts'
 import { UnknownBinaryOperatorError } from './errors/unknown_binary_operator_error.ts'
 import { MissingClosingParenthesisError } from './errors/missing_parenthese_error.ts'
+import { UnaryNode } from './models/unary_node.ts'
+import { UnaryNodeOperator } from './enums/unary_node_operator.ts'
 
 export class ExpressionParser {
   protected tokens: string[] = []
@@ -72,6 +74,12 @@ export class ExpressionParser {
 
   protected parseFactor(): BaseNode {
     const token = this.peek()
+
+    if (token === '-') {
+      this.consume() // consume '-'
+      const value = this.parseFactor()
+      return new UnaryNode(UnaryNodeOperator.NEGATE, value)
+    }
 
     if (token === '(') {
       this.consume() // consume '('

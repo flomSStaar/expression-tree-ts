@@ -7,7 +7,7 @@ import { MissingClosingParenthesisError } from '../src/errors/missing_parenthese
 import { UnknownBinaryOperatorError } from '../src/errors/unknown_binary_operator_error.ts'
 
 describe('expression parser', () => {
-  test.each(expressionParserInput())('expression: %s', (input, expected) => {
+  test.each(expressionParserInput())('expression: %o', (input, expected) => {
     const parser = new ExpressionParser()
 
     expect(parser.parse(input)).toStrictEqual(expected)

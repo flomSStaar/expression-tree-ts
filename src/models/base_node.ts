@@ -1,5 +1,5 @@
 import { NodeType } from '../enums/node_type.ts'
 
-export interface BaseNode {
-  type: NodeType
+export abstract class BaseNode {
+  protected constructor(protected type: NodeType) {}
 }

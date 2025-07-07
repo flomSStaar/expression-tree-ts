@@ -10,6 +10,25 @@ This is a simple expression tree implementation in TypeScript. It allows you to 
 
 ![expression tree](docs/tree.png)
 
+## Features
+
+- [x] Parse mathematical expressions into a tree structure.
+- [x] Evaluate expressions using the tree.
+- [x] Support for basic arithmetic operations
+  - [x] addition
+  - [x] subtraction
+  - [x] multiplication
+  - [x] division
+  - [x] exponentiation
+  - [x] unary minus
+  - [x] parentheses
+  - [x] operator precedence
+  - [x] operator associativity
+  - [ ] square root
+  - [ ] absolute value
+  - [ ] trigonometric functions (sin, cos, tan)
+  - [ ] logarithm
+
 ## Example
 
 ```shell
@@ -19,10 +38,6 @@ $ bun run index.ts
 Output:
 
 ```text
--------------------
-expected: sqrt(6 + 4 / 2 * 5) = 4
-actual:   sqrt(6 + 4 / 2 * 5) = 4
-same ?    true
 -------------------
 expected: 6 - -2 + 5 = 13
 actual:   6 - -2 + 5 = 13
@@ -36,8 +51,20 @@ expected: 6 + -2 * 5 = -4
 actual:   6 + -2 * 5 = -4
 same ?    true
 -------------------
+expected: 6 + 4 / 2 * 5 = 16
+actual:   6 + 4 / 2 * 5 = 16
+same ?    true
+-------------------
 expected: 6 + -(2 * 5) = -4
 actual:   6 + -(2 * 5) = -4
+same ?    true
+-------------------
+expected: 6 + 2 * 3 - 1 = 11
+actual:   6 + 2 * 3 - 1 = 11
+same ?    true
+-------------------
+expected: 6 + 2 * 3 - 1 + 2 ^ 2 = 15
+actual:   6 + 2 * 3 - 1 + 2 ^ 2 = 15
 same ?    true
 ```
 

@@ -4,7 +4,6 @@
 [![Security Rating](https://sonarqube.florentmarques.fr/api/project_badges/measure?project=expression-tree&metric=software_quality_security_rating&token=sqb_5625e2db1fa54b8af4278b6f13b70bc99f094f0a)](https://sonarqube.florentmarques.fr/dashboard?id=expression-tree)
 [![Coverage](https://sonarqube.florentmarques.fr/api/project_badges/measure?project=expression-tree&metric=coverage&token=sqb_5625e2db1fa54b8af4278b6f13b70bc99f094f0a)](https://sonarqube.florentmarques.fr/dashboard?id=expression-tree)
 
-
 ## Concept
 
 This is a simple expression tree implementation in TypeScript. It allows you to parse mathematical expressions and evaluate them using a tree structure.
@@ -55,4 +54,3 @@ To run:
 ```bash
 bun run index.ts
 ```
-

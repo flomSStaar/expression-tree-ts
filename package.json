@@ -4,9 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "bun index.ts",
-    "lint": "eslint src index.ts --fix",
+    "lint": "eslint src index.ts",
+    "lint:fix": "eslint src index.ts --fix",
+    "format": "prettier --check src index.ts",
+    "format:fix": "prettier --write src index.ts",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "typecheck": "bun run tsc --noEmit"
   },
   "devDependencies": {
     "@adonisjs/eslint-config": "^2.1.0",

@@ -1,4 +1,4 @@
-name: Tests
+name: Code Quality Check
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
   pull_request:
 
 jobs:
-  tests:
-    name: Run tests
+  eslint:
+    name: ESLint Check
     runs-on: ubuntu-latest
 
     steps:
@@ -16,11 +16,10 @@ jobs:
         with:
           bun-version: 'latest'
       - run: bun install
-      - run: bun run test
+      - run: bun run lint
 
-  coverage:
-    name: Generate coverage report
-    needs: tests
+  prettier:
+    name: Prettier Check
     runs-on: ubuntu-latest
 
     steps:
@@ -29,8 +28,16 @@ jobs:
         with:
           bun-version: 'latest'
       - run: bun install
-      - run: bun run coverage
-      - uses: sonarsource/sonarqube-scan-action@v3
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+      - run: bun run format --check
+
+  compiler:
+    name: Compiler Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 'latest'
+      - run: bun install
+      - run: bun run typecheck

@@ -29,10 +29,14 @@ This is a simple expression tree implementation in TypeScript. It allows you to 
   - [ ] trigonometric functions (sin, cos, tan)
   - [ ] logarithm
 
+## Prerequisites
+
+- [Bun](https://bun.sh/) (version 1.0.0 or higher)
+
 ## Example
 
 ```shell
-$ bun run index.ts
+$ bun run examples/example.ts
 ```
 
 Output:
@@ -74,10 +78,4 @@ To install dependencies:
 
 ```bash
 bun install
-```
-
-To run:
-
-```bash
-bun run index.ts
 ```

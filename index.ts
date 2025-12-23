@@ -1,23 +1,16 @@
-import { ExpressionTree } from './src/expression_tree.js'
-
-function testExpression(expression: string, expectedResult: number) {
-  const expressionTree = new ExpressionTree()
-
-  console.log('-------------------')
-  const expected = `${expression} = ${expectedResult}`
-  const actual = `${expression} = ${expressionTree.evaluate(expression)}`
-
-  console.log('expected:', expected)
-  console.log('actual:  ', actual)
-  console.log('same ?   ', expected === actual)
-}
-
-// testExpression('sqrt(6 + 4 / 2 * 5)', 4)
-
-testExpression('6 - -2 + 5', 13)
-testExpression('6 + -(2 + 5)', -1)
-testExpression('6 + -2 * 5', -4)
-testExpression('6 + 4 / 2 * 5', 16)
-testExpression('6 + -(2 * 5)', -4)
-testExpression('6 + 2 * 3 - 1', 11)
-testExpression('6 + 2 * 3 - 1 + 2 ^ 2', 15)
+export { ExpressionTree } from './src/expression_tree.js'
+export { ExpressionParser } from './src/expression_parser.js'
+export { ExpressionEvaluator } from './src/expression_evaluator.js'
+export { ExpressionCutter } from './src/expression_cutter.js'
+export { InvalidExpressionError } from './src/errors/invalid_expression_error.js'
+export { InvalidNumberError } from './src/errors/invalid_number_error.js'
+export { MissingClosingParenthesisError } from './src/errors/missing_parenthese_error.js'
+export { UnknownBinaryOperatorError } from './src/errors/unknown_binary_operator_error.js'
+export { UnknownUnaryOperatorError } from './src/errors/unknown_unary_operator_error.js'
+export { DivisionByZeroError } from './src/errors/division_by_zero_error.js'
+export { NegativeSquareRootError } from './src/errors/invalid_square_root_error.js'
+export { UnknownNodeTypeError } from './src/errors/unknown_node_type_error.js'
+export { BaseNode } from './src/models/base_node.js'
+export { BinaryNode } from './src/models/binary_node.js'
+export { UnaryNode } from './src/models/unary_node.js'
+export { NumberNode } from './src/models/number_node.js'

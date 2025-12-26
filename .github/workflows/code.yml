@@ -6,38 +6,46 @@ on:
   pull_request:
 
 jobs:
-  eslint:
-    name: ESLint Check
+  code-quality:
+    name: ${{ matrix.check.name }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        check:
+          - name: ESLint
+            script: lint
+          - name: Prettier
+            script: format
+          - name: TypeScript
+            script: typecheck
+
+    defaults:
+      run:
+        working-directory: packages/expression-tree
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: 'latest'
-      - run: bun install
-      - run: bun run lint
 
-  prettier:
-    name: Prettier Check
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
         with:
-          bun-version: 'latest'
-      - run: bun install
-      - run: bun run format --check
+          path: |
+            ~/.bun/install/cache
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb', '**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
 
-  compiler:
-    name: Compiler Check
-    runs-on: ubuntu-latest
+      - name: Install dependencies
+        run: bun install
+        working-directory: .
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 'latest'
-      - run: bun install
-      - run: bun run typecheck
+      - name: Run ${{ matrix.check.name }}
+        run: bun run ${{ matrix.check.script }}

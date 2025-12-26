@@ -16,7 +16,9 @@ jobs:
         with:
           bun-version: 'latest'
       - run: bun install
-      - run: bun run test
+      - name: Run tests in expression-tree package
+        working-directory: packages/expression-tree
+        run: bun run test
 
 #  coverage:
 #    name: Generate coverage report

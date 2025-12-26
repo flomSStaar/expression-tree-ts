@@ -6,6 +6,7 @@ export default defineConfig({
     coverage: {
       include: ['src/**/*.ts'],
       reporter: ['text', 'lcov'],
+      provider: 'v8',
     },
   },
 })

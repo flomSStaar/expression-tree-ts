@@ -18,21 +18,21 @@ jobs:
       - run: bun install
       - run: bun run test
 
-  coverage:
-    name: Generate coverage report
-    needs: tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 'latest'
-      - run: bun install
-      - run: bun run coverage
-      - uses: sonarsource/sonarqube-scan-action@v5.2.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+#  coverage:
+#    name: Generate coverage report
+#    needs: tests
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+#      - uses: oven-sh/setup-bun@v2
+#        with:
+#          bun-version: 'latest'
+#      - run: bun install
+#      - run: bun run coverage
+#      - uses: sonarsource/sonarqube-scan-action@v5.2.0
+#        env:
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}

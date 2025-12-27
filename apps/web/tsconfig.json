@@ -8,7 +8,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@flomsstaar/expression-tree": ["../../expression-tree"]
+      "@flomsstaar/expression-tree": ["../../packages/expression-tree"]
     }
   }
 }

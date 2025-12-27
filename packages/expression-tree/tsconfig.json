@@ -1,5 +1,5 @@
 {
-  "extends": "@expression-tree/tsconfig/tsconfig.package.json",
+  "extends": "../../tsconfig.package.json",
   "compilerOptions": {
     "rootDir": "./",
     "outDir": "./build"

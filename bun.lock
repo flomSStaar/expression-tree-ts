@@ -13,7 +13,7 @@
       "name": "web",
       "version": "0.0.0",
       "dependencies": {
-        "@flomsstaar/expression-tree": "^0.1.1",
+        "@flomsstaar/expression-tree": "^0.1.2",
         "@radix-ui/react-slot": "^1.2.4",
         "@tailwindcss/vite": "^4.1.18",
         "class-variance-authority": "^0.7.1",
@@ -43,11 +43,10 @@
     },
     "packages/expression-tree": {
       "name": "@flomsstaar/expression-tree",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "devDependencies": {
         "@adonisjs/eslint-config": "^2.1.2",
         "@adonisjs/prettier-config": "^1.4.5",
-        "@expression-tree/tsconfig": "workspace:*",
         "@vitest/coverage-v8": "4.0.16",
         "eslint": "^9.39.2",
         "prettier": "^3.7.4",
@@ -56,9 +55,6 @@
       "peerDependencies": {
         "typescript": "^5.9.3",
       },
-    },
-    "packages/tsconfig": {
-      "name": "@expression-tree/tsconfig",
     },
   },
   "packages": {
@@ -195,8 +191,6 @@
     "@eslint/object-schema": ["@eslint/object-schema@2.1.7", "", {}, "sha512-VtAOaymWVfZcmZbp6E2mympDIHvyjXs/12LqWYjVw6qjrfF+VK+fyG33kChz3nnK+SU5/NeHOqrTEHS8sXO3OA=="],
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.4.1", "", { "dependencies": { "@eslint/core": "^0.17.0", "levn": "^0.4.1" } }, "sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA=="],
-
-    "@expression-tree/tsconfig": ["@expression-tree/tsconfig@workspace:packages/tsconfig"],
 
     "@flomsstaar/expression-tree": ["@flomsstaar/expression-tree@workspace:packages/expression-tree"],
 
@@ -866,7 +860,7 @@
 
     "vitest/vite": ["vite@7.3.0", "", { "dependencies": { "esbuild": "^0.27.0", "fdir": "^6.5.0", "picomatch": "^4.0.3", "postcss": "^8.5.6", "rollup": "^4.43.0", "tinyglobby": "^0.2.15" }, "optionalDependencies": { "fsevents": "~2.3.3" }, "peerDependencies": { "@types/node": "^20.19.0 || >=22.12.0", "jiti": ">=1.21.0", "less": "^4.0.0", "lightningcss": "^1.21.0", "sass": "^1.70.0", "sass-embedded": "^1.70.0", "stylus": ">=0.54.8", "sugarss": "^5.0.0", "terser": "^5.16.0", "tsx": "^4.8.1", "yaml": "^2.4.2" }, "optionalPeers": ["@types/node", "jiti", "less", "lightningcss", "sass", "sass-embedded", "stylus", "sugarss", "terser", "tsx", "yaml"], "bin": { "vite": "bin/vite.js" } }, "sha512-dZwN5L1VlUBewiP6H9s2+B3e3Jg96D0vzN+Ry73sOefebhYr9f94wwkMNN/9ouoU8pV1BqA1d1zGk8928cx0rg=="],
 
-    "web/@flomsstaar/expression-tree": ["@flomsstaar/expression-tree@0.1.1", "", { "peerDependencies": { "typescript": "^5.8.3" } }, "sha512-Zwr3hmCsm5Bkiz2N09mPbslC8ETFLk4otC2A83G9nuPiv3p6yZRoW/DXUvj1MOU5ANXI6j1/iZFGgdz74QeGjw=="],
+    "web/@flomsstaar/expression-tree": ["@flomsstaar/expression-tree@0.1.2", "", { "peerDependencies": { "typescript": "^5.9.3" } }, "sha512-4P+vfuTIlofuDF/TMEky0FZXz8bSeNwIU90jSOuSB97DY+1q2xRKYbwhiBxj2NfJw+eEnMhX7gCHoDwBjRy/Yg=="],
 
     "@typescript-eslint/typescript-estree/minimatch/brace-expansion": ["brace-expansion@2.0.2", "", { "dependencies": { "balanced-match": "^1.0.0" } }, "sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ=="],
 

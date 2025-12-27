@@ -1,9 +1,9 @@
-import { useCalculatorHistory } from '@/features/history/hooks/useCalculatorHistory.ts'
+import { useCalculatorHistory } from '@/features/history/hooks/useCalculatorHistory'
 import { HistoryIcon, Trash2Icon } from 'lucide-react'
-import { Badge } from '@/components/ui/badge.tsx'
-import { Button } from '@/components/ui/button.tsx'
-import { Card, CardContent } from '@/components/ui/card.tsx'
-import type { CalculatorHistoryItem } from '@/features/history/types.ts'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import type { CalculatorHistoryItem } from '@/features/history/types'
 
 interface Props {
   onHistoryItemClick?: (item: CalculatorHistoryItem) => void

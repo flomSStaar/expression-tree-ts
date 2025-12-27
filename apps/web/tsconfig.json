@@ -7,8 +7,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@flomsstaar/expression-tree": ["../../packages/expression-tree"]
+      "@/*": ["./src/*"]
     }
   }
 }

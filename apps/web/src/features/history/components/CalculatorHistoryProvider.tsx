@@ -1,6 +1,6 @@
 import { type PropsWithChildren, useState } from 'react'
-import { CalculatorHistoryContext } from '@/features/history/context.ts'
-import type { CalculatorHistoryItem } from '@/features/history/types.ts'
+import { CalculatorHistoryContext } from '@/features/history/context'
+import type { CalculatorHistoryItem } from '@/features/history/types'
 
 export function CalculatorHistoryProvider({children}: PropsWithChildren) {
   const [history, setHistory] = useState<CalculatorHistoryItem[]>([])

@@ -1,5 +1,5 @@
-import { Calculator } from '@/features/calculator/components/Calculator.tsx'
-import { CalculatorHistoryProvider } from '@/features/history/components/CalculatorHistoryProvider.tsx'
+import { Calculator } from '@/features/calculator/components/Calculator'
+import { CalculatorHistoryProvider } from '@/features/history/components/CalculatorHistoryProvider'
 
 export function App() {
   return <main className="min-h-screen bg-linear-to-br from-background via-background to-accent/5">

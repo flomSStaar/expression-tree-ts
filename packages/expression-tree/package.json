@@ -1,50 +1,50 @@
 {
-    "name": "@flomsstaar/expression-tree",
-    "version": "0.1.1",
-    "main": "build/index.js",
-    "types": "build/index.d.ts",
-    "type": "module",
-    "files": [
-        "build"
-    ],
-    "exports": {
-        ".": {
-            "default": "./build/index.js",
-            "types": "./build/index.d.ts"
-        }
-    },
-    "scripts": {
-        "dev": "bun index.ts",
-        "lint": "eslint src index.ts",
-        "lint:fix": "eslint src index.ts --fix",
-        "format": "prettier --check src index.ts",
-        "format:fix": "prettier --write src index.ts",
-        "test": "vitest",
-        "coverage": "rm -rf coverage && vitest run --coverage",
-        "typecheck": "bun run tsc --noEmit",
-        "build": "rm -rf build && tsc"
-    },
-    "devDependencies": {
-        "@adonisjs/eslint-config": "^2.1.2",
-        "@adonisjs/prettier-config": "^1.4.5",
-        "@expression-tree/tsconfig": "workspace:*",
-        "@vitest/coverage-v8": "4.0.16",
-        "eslint": "^9.39.2",
-        "prettier": "^3.7.4",
-        "vitest": "^4.0.16"
-    },
-    "peerDependencies": {
-        "typescript": "^5.9.3"
-    },
-    "author": "Florent Marques <florent.marques19@gmail.com>",
-    "license": "MIT",
-    "keywords": [
-        "expression-tree",
-        "calculator"
-    ],
-    "repository": "https://github.com/flomSStaar/expression-tree-ts",
-    "eslintConfig": {
-        "extends": "@adonisjs/eslint-config/app"
-    },
-    "prettier": "@adonisjs/prettier-config"
+  "name": "@flomsstaar/expression-tree",
+  "version": "0.1.1",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "type": "module",
+  "files": [
+    "build"
+  ],
+  "exports": {
+    ".": {
+      "default": "./build/index.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "bun index.ts",
+    "lint": "eslint src index.ts",
+    "lint:fix": "eslint src index.ts --fix",
+    "format": "prettier --check src index.ts",
+    "format:fix": "prettier --write src index.ts",
+    "test": "vitest",
+    "coverage": "rm -rf coverage && vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "build": "rm -rf build && tsc"
+  },
+  "devDependencies": {
+    "@adonisjs/eslint-config": "^2.1.2",
+    "@adonisjs/prettier-config": "^1.4.5",
+    "@expression-tree/tsconfig": "workspace:*",
+    "@vitest/coverage-v8": "4.0.16",
+    "eslint": "^9.39.2",
+    "prettier": "^3.7.4",
+    "vitest": "^4.0.16"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "author": "Florent Marques <florent.marques19@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "expression-tree",
+    "calculator"
+  ],
+  "repository": "https://github.com/flomSStaar/expression-tree-ts",
+  "eslintConfig": {
+    "extends": "@adonisjs/eslint-config/app"
+  },
+  "prettier": "@adonisjs/prettier-config"
 }

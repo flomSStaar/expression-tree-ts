@@ -2,14 +2,14 @@
 
 import type React from 'react'
 import { useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card.tsx'
-import { Input } from '@/components/ui/input.tsx'
-import { Button } from '@/components/ui/button.tsx'
+import { Card, CardContent } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 import { Delete } from 'lucide-react'
-import { CalculatorHistory } from '@/features/history/components/CalculatorHistory.tsx'
-import { useCalculatorHistory } from '@/features/history/hooks/useCalculatorHistory.ts'
-import { useCalculator } from '@/features/calculator/hooks/useCalculator.ts'
-import { cn } from '@/lib/utils.ts'
+import { CalculatorHistory } from '@/features/history/components/CalculatorHistory'
+import { useCalculatorHistory } from '@/features/history/hooks/useCalculatorHistory'
+import { useCalculator } from '@/features/calculator/hooks/useCalculator'
+import { cn } from '@/lib/utils'
 
 interface HistoryItem {
   expression: string

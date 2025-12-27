@@ -2,6 +2,7 @@
   "name": "@flomsstaar/expression-tree",
   "version": "0.1.1",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "type": "module",
   "files": [
     "build"

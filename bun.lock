@@ -13,7 +13,7 @@
       "name": "web",
       "version": "0.0.0",
       "dependencies": {
-        "@flomsstaar/expression-tree": "^0.1.2",
+        "@flomsstaar/expression-tree": "workspace:*",
         "@radix-ui/react-slot": "^1.2.4",
         "@tailwindcss/vite": "^4.1.18",
         "class-variance-authority": "^0.7.1",
